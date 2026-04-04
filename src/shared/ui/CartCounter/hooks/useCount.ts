@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
 import { cartActions, cartSelectors } from '../../../store/slices/cart';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../../store/utils';

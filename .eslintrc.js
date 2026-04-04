@@ -9,6 +9,12 @@ module.exports = {
 		react: {
 			version: 'detect',
 		},
+		'import/resolver': {
+			node: {
+				paths: ['src'],
+				extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'],
+			},
+		},
 	},
 	extends: [
 		'plugin:@typescript-eslint/recommended',
@@ -25,6 +31,7 @@ module.exports = {
 	rules: {
 		semi: [2, 'always'],
 		quotes: [2, 'single', { avoidEscape: true }],
+		'import/no-unresolved': ['error', { ignore: ['\\?react$'] }],
 		'no-unused-vars': 'off',
 		'@typescript-eslint/no-unused-vars': ['error'],
 		'@typescript-eslint/no-var-requires': 'off',

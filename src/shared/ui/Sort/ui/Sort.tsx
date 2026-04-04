@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
 import { useSort } from '../hooks/useSort';
 
 export const Sort = () => {

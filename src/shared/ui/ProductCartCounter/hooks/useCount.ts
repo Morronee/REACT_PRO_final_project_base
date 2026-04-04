@@ -1,4 +1,5 @@
-import { useState, ChangeEvent } from 'react';
+import { useState } from 'react';
+import type { ChangeEvent } from 'react';
 
 const MIN_COUNT = 1;
 const MAX_COUNT = 99;
