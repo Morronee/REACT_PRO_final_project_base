@@ -1,3 +1,5 @@
+import type { Like, Product, Review } from 'entities/product';
+
 type ConfigApi = {
 	baseUrl: string;
 	headers: HeadersInit;

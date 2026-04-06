@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../../../../shared/store/slices/cart';
 import { CartCounter } from '../../../../../shared/ui/CartCounter';
+import type { CartProduct } from 'entities/product';
 
 type CartItemProps = {
 	product: CartProduct;

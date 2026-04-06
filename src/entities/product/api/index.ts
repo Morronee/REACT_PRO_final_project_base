@@ -1,40 +1,14 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { customBaseQuery } from './config';
+import { customBaseQuery } from 'shared/store/api/config.ts';
+import type {
+	DeleteLikeResponse,
+	Product,
+	ProductRequest,
+	ProductsResponse,
+	SetLikeResponse,
+} from '../model/types.ts';
 
-export interface IErrorResponse {
-	data: { statusCode: number; message: string; error: string };
-	status: number;
-}
-
-interface ProductsResponse {
-	products: Product[];
-	length: number;
-}
-
-interface SetLikeResponse {
-	like: {
-		id: string;
-		userId: string;
-		productId: string;
-	};
-	message: string;
-}
-interface DeleteLikeResponse {
-	product: {
-		id: string;
-		userId: string;
-		productId: string;
-	};
-	message: string;
-}
-interface ProductRequest {
-	page: number;
-	perPage?: number;
-	sort: Sort;
-	searchText: string;
-}
-
-export const productsApi = createApi({
+export const productApi = createApi({
 	reducerPath: 'productsApi',
 	baseQuery: customBaseQuery,
 	tagTypes: ['Products'],
@@ -109,4 +83,4 @@ export const {
 	useGetProductsQuery,
 	useSetLikeProductMutation,
 	useDeleteLikeProductMutation,
-} = productsApi;
+} = productApi;

@@ -6,9 +6,9 @@ import { userSelectors } from '../../../store/slices/user';
 import {
 	useSetLikeProductMutation,
 	useDeleteLikeProductMutation,
-	type IErrorResponse,
-} from '../../../store/api/productsApi';
+} from 'entities/product/api';
 import { toast } from 'react-toastify';
+import type { IErrorResponse, Product } from 'entities/product';
 
 type TLikeButtonProps = {
 	product: Product;

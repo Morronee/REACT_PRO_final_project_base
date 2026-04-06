@@ -8,7 +8,7 @@ import { ButtonBack } from '../../../shared/ui/ButtonBack';
 import { LikeButton } from '../../../shared/ui/LikeButton';
 import { ReviewList } from '../../../widgets/ReviewList/ui/ReviewList';
 import { WithProtection } from '../../../shared/store/HOCs/WithProtection';
-import { useGetProductQuery } from '../../../shared/store/api/productsApi';
+import { useGetProductQuery } from 'entities/product/api';
 import { ProductCartCounter } from '../../../shared/ui/ProductCartCounter/ui/ProductCartCounter';
 import { useAppSelector } from '../../../shared/store/utils';
 import { cartSelectors } from '../../../shared/store/slices/cart';

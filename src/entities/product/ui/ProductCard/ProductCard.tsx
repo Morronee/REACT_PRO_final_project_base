@@ -1,17 +1,18 @@
 import classNames from 'classnames';
-import s from './Card.module.css';
-import { Price } from './Price/ui/Price';
+import s from './ProductCard.module.css';
+import { ProductPrice } from 'entities/product/ui/ProductPrice/ProductPrice.tsx';
 import { Link } from 'react-router-dom';
-import { LikeButton } from '../../LikeButton';
-import { useAppSelector } from '../../../store/utils';
-import { cartSelectors } from '../../../store/slices/cart';
-import { useAddToCart } from '../../../hooks/useAddToCart';
-import { CartCounter } from '../../CartCounter';
+import type { Product } from 'entities/product';
+import { useAppSelector } from 'shared/store/utils.ts';
+import { cartSelectors } from 'shared/store/slices/cart.ts';
+import { useAddToCart } from 'shared/hooks/useAddToCart.ts';
+import { CartCounter } from 'shared/ui/CartCounter';
+import { LikeButton } from 'shared/ui/LikeButton';
 
 type CardProps = {
 	product: Product;
 };
-export const Card = ({ product }: CardProps) => {
+export const ProductCard = ({ product }: CardProps) => {
 	const { discount, price, name, tags, id, images } = product;
 	const cartProducts = useAppSelector(cartSelectors.getCartProducts);
 	const isProductInCart = cartProducts.some((p) => p.id === id);
@@ -47,7 +48,7 @@ export const Card = ({ product }: CardProps) => {
 					loading='lazy'
 				/>
 				<div className={s['card__desc']}>
-					<Price price={price} discountPrice={discount} />
+					<ProductPrice price={price} discountPrice={discount} />
 					<h3 className={s['card__name']}>{name}</h3>
 				</div>
 			</Link>
