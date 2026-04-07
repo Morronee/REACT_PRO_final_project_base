@@ -1,6 +1,6 @@
-import { useCount } from '../hooks/useCount';
 import s from './CartCounter.module.css';
 import classNames from 'classnames';
+import { useCount } from 'entities/cart/lib/useCount.ts';
 
 type TCartCounter = {
 	productId: string;

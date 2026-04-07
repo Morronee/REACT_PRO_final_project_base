@@ -1,6 +1,6 @@
-import { cartActions } from '../store/slices/cart';
 import { useAppDispatch } from '../store/utils';
 import type { CartProduct } from 'entities/product';
+import { cartActions } from 'entities/cart';
 
 export const useAddToCart = () => {
 	const dispatch = useAppDispatch();

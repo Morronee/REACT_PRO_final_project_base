@@ -1,7 +1,7 @@
-import { CartItem } from '../../CartItem';
 import s from '../../CartPage.module.css';
 import classNames from 'classnames';
 import type { CartProduct } from 'entities/product';
+import { CartItem } from 'entities/cart';
 
 type CartListProps = {
 	products: CartProduct[];

@@ -4,10 +4,9 @@ import { ProductPrice } from 'entities/product/ui/ProductPrice/ProductPrice.tsx'
 import { Link } from 'react-router-dom';
 import type { Product } from 'entities/product';
 import { useAppSelector } from 'shared/store/utils.ts';
-import { cartSelectors } from 'shared/store/slices/cart.ts';
 import { useAddToCart } from 'shared/hooks/useAddToCart.ts';
-import { CartCounter } from 'shared/ui/CartCounter';
 import { LikeButton } from 'shared/ui/LikeButton';
+import { CartCounter, cartSelectors } from 'entities/cart';
 
 type CardProps = {
 	product: Product;

@@ -54,8 +54,6 @@ declare global {
 			password: string;
 		};
 
-
-
 	type BaseDates = {
 		createdAt: string;
 		updatedAt?: string;

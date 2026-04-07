@@ -1,8 +1,8 @@
 import type { ChangeEvent } from 'react';
-import { cartActions, cartSelectors } from '../../../store/slices/cart';
 import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../../../store/utils';
 import type { CartProduct } from 'entities/product';
+import { cartActions, cartSelectors } from 'entities/cart';
+import { useAppSelector } from 'shared/store/utils.ts';
 
 const MIN_COUNT = 1;
 const MAX_COUNT = 99;
