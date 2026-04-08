@@ -3,18 +3,16 @@ import s from './ProductCard.module.css';
 import { ProductPrice } from 'entities/product/ui/ProductPrice/ProductPrice.tsx';
 import { Link } from 'react-router-dom';
 import type { Product } from 'entities/product';
-import { useAppSelector } from 'shared/store/utils.ts';
-import { CartCounter, cartSelectors } from 'entities/cart';
-import { AddToCartButton } from 'features/cart/add-to-cart';
-import { ToggleLikeButton } from 'features/product/toggle-like';
+import type { ReactNode } from 'react';
 
 type CardProps = {
 	product: Product;
+	likeSlot?: ReactNode;
+	cartSlot?: ReactNode;
 };
-export const ProductCard = ({ product }: CardProps) => {
+export const ProductCard = ({ product, likeSlot, cartSlot }: CardProps) => {
 	const { discount, price, name, tags, id, images } = product;
-	const cartProducts = useAppSelector(cartSelectors.getCartProducts);
-	const isProductInCart = cartProducts.some((p) => p.id === id);
+
 
 	return (
 		<article className={s['card']}>
@@ -36,7 +34,7 @@ export const ProductCard = ({ product }: CardProps) => {
 					s['card__sticky'],
 					s['card__sticky_type_top-right']
 				)}>
-				<ToggleLikeButton product={product} />
+				{likeSlot}
 			</div>
 			<Link className={s['card__link']} to={`/products/${id}`}>
 				<img
@@ -50,19 +48,7 @@ export const ProductCard = ({ product }: CardProps) => {
 					<h3 className={s['card__name']}>{name}</h3>
 				</div>
 			</Link>
-			{isProductInCart ? (
-				<CartCounter productId={id} />
-			) : (
-				<AddToCartButton
-					product={product}
-					isProductInCart={isProductInCart}
-					classNames={classNames(
-						s['card__cart'],
-						s['card__btn'],
-						s['card__btn_type_primary']
-					)}
-				/>
-			)}
+			{cartSlot}
 		</article>
 	);
 };
