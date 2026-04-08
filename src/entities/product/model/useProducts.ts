@@ -1,33 +1,20 @@
-import { useLocation } from 'react-router-dom';
 import { useAppSelector } from 'shared/store/utils.ts';
-import { isLiked } from 'shared/utils';
 import { useGetProductsQuery } from 'entities/product/api';
 import { productsSelectors } from 'entities/product';
-import { userSelectors } from 'entities/user';
 
-// TODO возможно убрать в другой слой, подумать
 export const useProducts = () => {
-	const { pathname } = useLocation();
-
 	const { searchText, page, perPage, sort } = useAppSelector(
 		productsSelectors.getProductsState
 	);
 
-	const isFavoritesPage = pathname === '/favorites';
 	const { isLoading, isError, error, data, isFetching } = useGetProductsQuery({
 		searchText,
 		sort,
 		page,
-		perPage: isFavoritesPage ? undefined : perPage,
+		perPage,
 	});
 
-	let products = data?.products || [];
-
-	const user = useAppSelector(userSelectors.getUser);
-
-	if (isFavoritesPage) {
-		products = products.filter((product) => isLiked(product.likes, user?.id));
-	}
+	const products = data?.products || [];
 
 	const productsCount = data?.length || 0;
 

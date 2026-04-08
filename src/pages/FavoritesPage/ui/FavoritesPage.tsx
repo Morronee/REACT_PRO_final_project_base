@@ -1,13 +1,13 @@
 import { WithQuery } from 'shared/store/HOCs/WithQuery.tsx';
-import { useProducts } from 'entities/product/lib/useProducts.ts';
 import { ButtonBack } from 'shared/ui/ButtonBack';
 import { ProductCardList } from 'widgets/product';
 import { WithProtection } from 'features/auth/guard';
+import { useFavoriteProducts } from 'features/product/favorites';
 
 const ProductCardListWithQuery = WithQuery(ProductCardList);
 
 export const FavoritesPage = WithProtection(() => {
-	const { isLoading, isError, products, error } = useProducts();
+	const { isLoading, isError, products, error } = useFavoriteProducts();
 
 	return (
 		<>

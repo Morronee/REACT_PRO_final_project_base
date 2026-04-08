@@ -1,5 +1,5 @@
 import s from './ToggleLikeButton.module.css';
-import LikeSvg from './../../../assets/icons/like.svg?react';
+import LikeSvg from '../../../../shared/assets/icons/like.svg?react';
 import classNames from 'classnames';
 import {
 	useSetLikeProductMutation,

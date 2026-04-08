@@ -4,7 +4,7 @@ import { Logo } from 'shared/ui/Logo';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from 'shared/store/utils.ts';
 import { isLiked } from 'shared/utils';
-import { useProducts } from 'entities/product/lib/useProducts.ts';
+import { useProducts } from 'entities/product/model/useProducts.ts';
 import { cartSelectors } from 'entities/cart';
 import { userSelectors } from 'entities/user';
 import { Search } from 'features/product/search';
