@@ -15,11 +15,10 @@ import { Controller, useForm } from 'react-hook-form';
 import type { SubmitHandler } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup';
-import type { SignUpFormValues } from '../utils/types';
-import { signUpFormSchema } from '../utils/validator';
 import { getMessageFromError } from 'shared/utils';
 import { useSignUpMutation } from 'shared/store/api/authApi.ts';
 import { userActions } from 'entities/user';
+import { signUpFormSchema, type SignUpFormValues } from 'features/auth/sign-up';
 
 export const SignUpForm: FC = () => {
 	const dispatch = useDispatch();

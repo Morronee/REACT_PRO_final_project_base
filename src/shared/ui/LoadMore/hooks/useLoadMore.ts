@@ -1,7 +1,7 @@
 import { useCallback, useLayoutEffect } from 'react';
 import type { RefObject } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../store/utils';
-import { useProducts } from '../../../store/hooks/useProducts';
+import { useProducts } from 'entities/product/lib/useProducts.ts';
 import { productsActions, productsSelectors } from 'entities/product';
 
 interface UseLoadMoreParams {

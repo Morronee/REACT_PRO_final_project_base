@@ -1,8 +1,8 @@
-import { WithProtection } from 'shared/store/HOCs/WithProtection.tsx';
 import { WithQuery } from 'shared/store/HOCs/WithQuery.tsx';
 import { LoadMore } from 'shared/ui/LoadMore';
-import { useProducts } from 'shared/store/hooks/useProducts.ts';
+import { useProducts } from 'entities/product/lib/useProducts.ts';
 import { ProductCardList } from 'widgets/product';
+import { WithProtection } from 'features/auth/guard';
 
 const ProductCardListWithQuery = WithQuery(ProductCardList);
 

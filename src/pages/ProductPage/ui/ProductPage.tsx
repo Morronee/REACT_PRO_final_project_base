@@ -7,11 +7,11 @@ import { Rating } from 'shared/ui/Rating';
 import { ButtonBack } from 'shared/ui/ButtonBack';
 import { LikeButton } from 'shared/ui/LikeButton';
 import { ReviewList } from 'widgets/ReviewList/ui/ReviewList.tsx';
-import { WithProtection } from 'shared/store/HOCs/WithProtection.tsx';
 import { useGetProductQuery } from 'entities/product/api';
 import { useAppSelector } from 'shared/store/utils.ts';
 import { CartCounter, cartSelectors } from 'entities/cart';
 import { AddToCartWithCounterButton } from 'features/cart/add-to-cart';
+import { WithProtection } from 'features/auth/guard';
 
 export const ProductPage = WithProtection(() => {
 	const location = useLocation();
