@@ -1,5 +1,5 @@
 import type { ChangeEvent } from 'react';
-import { useSort } from '../hooks/useSort';
+import { useSort } from 'features/product/sort';
 
 export const Sort = () => {
 	const { sort, setSort, sortParams } = useSort();

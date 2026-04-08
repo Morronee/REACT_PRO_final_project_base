@@ -5,13 +5,13 @@ import truckSVG from '../../../shared/assets/icons/truck.svg';
 import qualitySVG from '../../../shared/assets/icons/quality.svg';
 import { Rating } from 'shared/ui/Rating';
 import { ButtonBack } from 'shared/ui/ButtonBack';
-import { LikeButton } from 'shared/ui/LikeButton';
 import { ReviewList } from 'widgets/ReviewList/ui/ReviewList.tsx';
 import { useGetProductQuery } from 'entities/product/api';
 import { useAppSelector } from 'shared/store/utils.ts';
 import { CartCounter, cartSelectors } from 'entities/cart';
 import { AddToCartWithCounterButton } from 'features/cart/add-to-cart';
 import { WithProtection } from 'features/auth/guard';
+import { ToggleLikeButton } from 'features/product/toggle-like';
 
 export const ProductPage = WithProtection(() => {
 	const location = useLocation();
@@ -58,7 +58,7 @@ export const ProductPage = WithProtection(() => {
 						<AddToCartWithCounterButton product={product} />
 					)}
 
-					<LikeButton product={product} />
+					<ToggleLikeButton product={product} />
 					<div className={classNames(s['product__delivery'])}>
 						<img src={truckSVG} alt='truck' />
 						<div className={classNames(s['product__right'])}>

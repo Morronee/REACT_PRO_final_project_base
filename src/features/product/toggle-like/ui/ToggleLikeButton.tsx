@@ -1,7 +1,6 @@
-import s from './LikeButton.module.css';
+import s from './ToggleLikeButton.module.css';
 import LikeSvg from './../../../assets/icons/like.svg?react';
 import classNames from 'classnames';
-import { useAppSelector } from '../../../store/utils';
 import {
 	useSetLikeProductMutation,
 	useDeleteLikeProductMutation,
@@ -9,11 +8,12 @@ import {
 import { toast } from 'react-toastify';
 import type { IErrorResponse, Product } from 'entities/product';
 import { userSelectors } from 'entities/user';
+import { useAppSelector } from 'shared/store/utils.ts';
 
 type TLikeButtonProps = {
 	product: Product;
 };
-export const LikeButton = ({ product }: TLikeButtonProps) => {
+export const ToggleLikeButton = ({ product }: TLikeButtonProps) => {
 	const accessToken = useAppSelector(userSelectors.getAccessToken);
 	const user = useAppSelector(userSelectors.getUser);
 

@@ -4,9 +4,9 @@ import { ProductPrice } from 'entities/product/ui/ProductPrice/ProductPrice.tsx'
 import { Link } from 'react-router-dom';
 import type { Product } from 'entities/product';
 import { useAppSelector } from 'shared/store/utils.ts';
-import { LikeButton } from 'shared/ui/LikeButton';
 import { CartCounter, cartSelectors } from 'entities/cart';
 import { AddToCartButton } from 'features/cart/add-to-cart';
+import { ToggleLikeButton } from 'features/product/toggle-like';
 
 type CardProps = {
 	product: Product;
@@ -36,7 +36,7 @@ export const ProductCard = ({ product }: CardProps) => {
 					s['card__sticky'],
 					s['card__sticky_type_top-right']
 				)}>
-				<LikeButton product={product} />
+				<ToggleLikeButton product={product} />
 			</div>
 			<Link className={s['card__link']} to={`/products/${id}`}>
 				<img

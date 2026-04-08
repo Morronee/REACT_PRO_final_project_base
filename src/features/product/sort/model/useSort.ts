@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../../../store/utils';
+import { useAppDispatch, useAppSelector } from 'shared/store/utils.ts';
 import { productsActions, productsSelectors } from 'entities/product';
 
 interface SortParams {
