@@ -1,6 +1,6 @@
-import { useAppDispatch } from 'app/providers/store/lib/utils.ts';
 import type { CartProduct } from 'entities/product';
 import { cartActions } from 'entities/cart';
+import { useAppDispatch } from 'shared/hooks';
 
 export const useAddToCart = () => {
 	const dispatch = useAppDispatch();

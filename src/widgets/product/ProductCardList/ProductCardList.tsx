@@ -4,7 +4,7 @@ import { CartCounter, cartSelectors } from 'entities/cart';
 import { AddToCartButton } from 'features/cart/add-to-cart';
 import classNames from 'classnames';
 import { ToggleLikeButton } from 'features/product/toggle-like';
-import { useAppSelector } from 'app/providers/store';
+import { useAppSelector } from 'shared/hooks';
 
 type CardListProps = {
 	title: string;

@@ -8,7 +8,7 @@ import {
 import { toast } from 'react-toastify';
 import type { IErrorResponse, Product } from 'entities/product';
 import { userSelectors } from 'entities/user';
-import { useAppSelector } from 'app/providers/store/lib/utils.ts';
+import { useAppSelector } from 'shared/hooks';
 
 type TLikeButtonProps = {
 	product: Product;

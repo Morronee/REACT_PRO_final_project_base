@@ -1,6 +1,6 @@
-import { useAppSelector } from 'app/providers/store/lib/utils.ts';
 import { useGetProductsQuery } from 'entities/product/api';
 import { productsSelectors } from 'entities/product';
+import { useAppSelector } from 'shared/hooks';
 
 export const useProducts = () => {
 	const { searchText, page, perPage, sort } = useAppSelector(

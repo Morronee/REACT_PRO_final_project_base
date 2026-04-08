@@ -1,6 +1,6 @@
 import { useCallback, useLayoutEffect } from 'react';
 import type { RefObject } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/providers/store/lib/utils.ts';
+import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import { useProducts } from 'entities/product/model/useProducts.ts';
 import { productsActions, productsSelectors } from 'entities/product';
 
