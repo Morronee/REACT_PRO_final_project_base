@@ -4,7 +4,7 @@ import type { ChangeEvent } from 'react';
 const MIN_COUNT = 1;
 const MAX_COUNT = 99;
 
-export const useCount = () => {
+export const useProductCount = () => {
 	const [count, setCount] = useState(1);
 
 	const handleCount = (e: ChangeEvent<HTMLInputElement>) => {

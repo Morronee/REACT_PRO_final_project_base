@@ -1,11 +1,11 @@
-import s from './CardList.module.css';
+import s from './ProductCardList.module.css';
 import { ProductCard, type Product } from 'entities/product';
 
 type CardListProps = {
 	title: string;
 	products: Product[];
 };
-export const CardList = ({ title, products }: CardListProps) => {
+export const ProductCardList = ({ title, products }: CardListProps) => {
 	if (!products.length) {
 		return <h1 className='header-title'>Товар не найден</h1>;
 	}

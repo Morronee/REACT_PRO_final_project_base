@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import type { User, Token } from 'entities/user';
 
 interface UserState {
 	user: Partial<User> | null;

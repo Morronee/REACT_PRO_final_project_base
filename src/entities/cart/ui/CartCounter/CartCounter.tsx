@@ -1,13 +1,13 @@
 import s from './CartCounter.module.css';
 import classNames from 'classnames';
-import { useCount } from 'entities/cart/lib/useCount.ts';
+import { useCartCount } from 'entities/cart/lib/useCartCount.ts';
 
 type TCartCounter = {
 	productId: string;
 };
 export const CartCounter = ({ productId }: TCartCounter) => {
 	const { count, stock, handleSetCount, handleIncrement, handleDecrement } =
-		useCount(productId);
+		useCartCount(productId);
 
 	return (
 		<>

@@ -1,4 +1,4 @@
-import { useAppDispatch } from '../store/utils';
+import { useAppDispatch } from 'shared/store/utils.ts';
 import type { CartProduct } from 'entities/product';
 import { cartActions } from 'entities/cart';
 

@@ -7,7 +7,7 @@ import { useAppSelector } from 'shared/store/utils.ts';
 const MIN_COUNT = 1;
 const MAX_COUNT = 99;
 
-export const useCount = (productId: string) => {
+export const useCartCount = (productId: string) => {
 	const dispatch = useDispatch();
 	const products = useAppSelector(cartSelectors.getCartProducts);
 	const product = products.find((p) => p.id === productId) as CartProduct;

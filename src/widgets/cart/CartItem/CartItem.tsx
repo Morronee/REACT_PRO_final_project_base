@@ -1,21 +1,16 @@
-import TrashIcon from 'shared/assets/icons/trash.svg?react';
 import { Link } from 'react-router-dom';
 import s from './CartItem.module.css';
 import classNames from 'classnames';
-import { useDispatch } from 'react-redux';
 import type { CartProduct } from 'entities/product';
-import { cartActions, CartCounter } from 'entities/cart';
+import { CartCounter } from 'entities/cart';
+import { DeleteCartProductButton } from 'features/cart/delete-cart-product';
 
 type CartItemProps = {
 	product: CartProduct;
 };
 export const CartItem = ({ product }: CartItemProps) => {
-	const dispatch = useDispatch();
 	const { id, name, images, price, discount } = product;
 
-	const handleDelete = () => {
-		dispatch(cartActions.deleteCartProduct(id));
-	};
 	return (
 		<div className={classNames(s['cart-item'])}>
 			<div className={classNames(s['cart-item__desc'])}>
@@ -48,9 +43,10 @@ export const CartItem = ({ product }: CartItemProps) => {
 								</div>
 							</div>
 						</div>
-						<button className={classNames(s['cart-item__bnt-trash'])}>
-							<TrashIcon onClick={handleDelete} />
-						</button>
+						<DeleteCartProductButton
+							productid={id}
+							className={classNames(s['cart-item__bnt-trash'])}
+						/>
 					</div>
 				</div>
 			</div>

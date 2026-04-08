@@ -1,10 +1,10 @@
-import { WithProtection } from '../../../shared/store/HOCs/WithProtection';
-import { WithQuery } from '../../../shared/store/HOCs/WithQuery';
-import { useProducts } from '../../../shared/store/hooks/useProducts';
-import { ButtonBack } from '../../../shared/ui/ButtonBack';
-import { CardList } from '../../../widgets/CardList';
+import { WithProtection } from 'shared/store/HOCs/WithProtection.tsx';
+import { WithQuery } from 'shared/store/HOCs/WithQuery.tsx';
+import { useProducts } from 'shared/store/hooks/useProducts.ts';
+import { ButtonBack } from 'shared/ui/ButtonBack';
+import { ProductCardList } from 'widgets/product';
 
-const CardListWithQuery = WithQuery(CardList);
+const ProductCardListWithQuery = WithQuery(ProductCardList);
 
 export const FavoritesPage = WithProtection(() => {
 	const { isLoading, isError, products, error } = useProducts();
@@ -13,7 +13,7 @@ export const FavoritesPage = WithProtection(() => {
 		<>
 			<br />
 			<ButtonBack />
-			<CardListWithQuery
+			<ProductCardListWithQuery
 				title='Избранные'
 				isLoading={isLoading}
 				isError={isError}

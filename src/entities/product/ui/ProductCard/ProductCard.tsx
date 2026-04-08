@@ -4,9 +4,9 @@ import { ProductPrice } from 'entities/product/ui/ProductPrice/ProductPrice.tsx'
 import { Link } from 'react-router-dom';
 import type { Product } from 'entities/product';
 import { useAppSelector } from 'shared/store/utils.ts';
-import { useAddToCart } from 'shared/hooks/useAddToCart.ts';
 import { LikeButton } from 'shared/ui/LikeButton';
 import { CartCounter, cartSelectors } from 'entities/cart';
+import { AddToCartButton } from 'features/cart/add-to-cart';
 
 type CardProps = {
 	product: Product;
@@ -15,7 +15,6 @@ export const ProductCard = ({ product }: CardProps) => {
 	const { discount, price, name, tags, id, images } = product;
 	const cartProducts = useAppSelector(cartSelectors.getCartProducts);
 	const isProductInCart = cartProducts.some((p) => p.id === id);
-	const { addProductToCart } = useAddToCart();
 
 	return (
 		<article className={s['card']}>
@@ -54,16 +53,15 @@ export const ProductCard = ({ product }: CardProps) => {
 			{isProductInCart ? (
 				<CartCounter productId={id} />
 			) : (
-				<button
-					onClick={() => addProductToCart({ ...product, count: 1 })}
-					disabled={isProductInCart}
-					className={classNames(
+				<AddToCartButton
+					product={product}
+					isProductInCart={isProductInCart}
+					classNames={classNames(
 						s['card__cart'],
 						s['card__btn'],
 						s['card__btn_type_primary']
-					)}>
-					В корзину
-				</button>
+					)}
+				/>
 			)}
 		</article>
 	);

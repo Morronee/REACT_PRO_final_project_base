@@ -19,8 +19,8 @@ import { useDispatch } from 'react-redux';
 import type { SignInFormValues } from '../utils/types';
 import { signInFormSchema } from '../utils/validator';
 import { useSignInMutation } from 'shared/store/api/authApi.ts';
-import { userActions } from 'shared/store/slices/user.ts';
 import { getMessageFromError } from 'shared/utils';
+import { userActions } from 'entities/user';
 
 export const SignInForm: FC = () => {
 	const dispatch = useDispatch();

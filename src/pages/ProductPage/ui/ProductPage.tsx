@@ -9,9 +9,9 @@ import { LikeButton } from 'shared/ui/LikeButton';
 import { ReviewList } from 'widgets/ReviewList/ui/ReviewList.tsx';
 import { WithProtection } from 'shared/store/HOCs/WithProtection.tsx';
 import { useGetProductQuery } from 'entities/product/api';
-import { ProductCartCounter } from 'shared/ui/ProductCartCounter';
 import { useAppSelector } from 'shared/store/utils.ts';
 import { CartCounter, cartSelectors } from 'entities/cart';
+import { AddToCartWithCounterButton } from 'features/cart/add-to-cart';
 
 export const ProductPage = WithProtection(() => {
 	const location = useLocation();
@@ -55,7 +55,7 @@ export const ProductPage = WithProtection(() => {
 					{isProductInCart ? (
 						<CartCounter productId={id} />
 					) : (
-						<ProductCartCounter product={product} />
+						<AddToCartWithCounterButton product={product} />
 					)}
 
 					<LikeButton product={product} />

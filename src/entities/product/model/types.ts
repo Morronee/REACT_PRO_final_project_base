@@ -1,3 +1,5 @@
+import type { LikeUser, User } from 'entities/user';
+
 export type ProductsData = {
 	products: Product[];
 	length: number;

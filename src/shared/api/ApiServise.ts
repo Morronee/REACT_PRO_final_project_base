@@ -1,4 +1,5 @@
 import type { Like, Product, Review } from 'entities/product';
+import type { User } from 'entities/user';
 
 type ConfigApi = {
 	baseUrl: string;
