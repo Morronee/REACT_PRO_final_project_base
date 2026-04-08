@@ -1,4 +1,4 @@
-export { useAppDispatch } from './useAppDispatch.ts';
-export { useAppSelector } from './useAppSelector.ts';
-export { useDebounce } from './useDebounce.ts';
-export { usePagination } from './usePagination.ts';
+export { useAppDispatch } from './lib/useAppDispatch.ts';
+export { useAppSelector } from './lib/useAppSelector.ts';
+export { useDebounce } from './lib/useDebounce.ts';
+export { usePagination } from './lib/usePagination.ts';
