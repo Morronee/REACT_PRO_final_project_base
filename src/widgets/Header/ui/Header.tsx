@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import s from './Header.module.css';
 import { Logo } from 'shared/ui/Logo';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from 'shared/store/utils.ts';
+import { useAppSelector } from 'app/providers/store/lib/utils.ts';
 import { isLiked } from 'shared/utils';
 import { useProducts } from 'entities/product/model/useProducts.ts';
 import { cartSelectors } from 'entities/cart';

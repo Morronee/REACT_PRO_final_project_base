@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { useSignInMutation } from 'shared/store/api/authApi.ts';
+import { useSignInMutation } from 'features/auth/api/authApi.ts';
 import { getMessageFromError } from 'shared/utils';
 import { userActions } from 'entities/user';
 import { signInFormSchema, type SignInFormValues } from 'features/auth/sign-in';

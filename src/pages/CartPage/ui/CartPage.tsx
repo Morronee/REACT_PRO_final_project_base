@@ -1,6 +1,6 @@
 import s from './CartPage.module.css';
 import classNames from 'classnames';
-import { useAppSelector } from 'shared/store/utils.ts';
+import { useAppSelector } from 'app/providers/store/lib/utils.ts';
 import { cartSelectors } from 'entities/cart';
 import { CartAmount, CartList } from 'widgets/cart';
 

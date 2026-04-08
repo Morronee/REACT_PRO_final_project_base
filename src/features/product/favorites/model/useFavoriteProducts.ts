@@ -1,4 +1,4 @@
-import { useAppSelector } from 'shared/store/utils.ts';
+import { useAppSelector } from 'app/providers/store/lib/utils.ts';
 import { isLiked } from 'shared/utils';
 import { useGetProductsQuery } from 'entities/product/api';
 import { productsSelectors } from 'entities/product';

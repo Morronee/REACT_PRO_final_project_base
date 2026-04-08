@@ -1,4 +1,4 @@
-import { WithQuery } from 'shared/store/HOCs/WithQuery.tsx';
+import { WithQuery } from 'features/common/query-state';
 import { ButtonBack } from 'shared/ui/ButtonBack';
 import { ProductCardList } from 'widgets/product';
 import { WithProtection } from 'features/auth/guard';

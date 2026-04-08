@@ -1,7 +1,7 @@
 import type { ComponentType, FC } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { userSelectors } from 'entities/user';
-import { useAppSelector } from 'shared/store/utils.ts';
+import { useAppSelector } from 'app/providers/store/lib/utils.ts';
 
 export const WithProtection = <P extends object>(
 	WrappedComponent: ComponentType<P>

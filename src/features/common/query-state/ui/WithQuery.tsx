@@ -7,7 +7,7 @@ import {
 	Container,
 } from '@mui/material';
 import type { FC, ComponentType } from 'react';
-import { getMessageFromError } from '../../utils';
+import { getMessageFromError } from 'shared/utils';
 import type { SerializedError } from '@reduxjs/toolkit';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 

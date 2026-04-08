@@ -16,7 +16,7 @@ import type { SubmitHandler } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getMessageFromError } from 'shared/utils';
-import { useSignUpMutation } from 'shared/store/api/authApi.ts';
+import { useSignUpMutation } from 'features/auth/api/authApi.ts';
 import { userActions } from 'entities/user';
 import { signUpFormSchema, type SignUpFormValues } from 'features/auth/sign-up';
 

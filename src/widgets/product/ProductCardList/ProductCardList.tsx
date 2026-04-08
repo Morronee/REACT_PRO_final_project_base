@@ -3,8 +3,8 @@ import { ProductCard, type Product } from 'entities/product';
 import { CartCounter, cartSelectors } from 'entities/cart';
 import { AddToCartButton } from 'features/cart/add-to-cart';
 import classNames from 'classnames';
-import { useAppSelector } from 'shared/store/utils.ts';
 import { ToggleLikeButton } from 'features/product/toggle-like';
+import { useAppSelector } from 'app/providers/store';
 
 type CardListProps = {
 	title: string;

@@ -1,6 +1,6 @@
-import { WithQuery } from 'shared/store/HOCs/WithQuery.tsx';
-import { useProducts } from 'entities/product/model/useProducts.ts';
+import { WithQuery } from 'features/common/query-state';
 import { ProductCardList } from 'widgets/product';
+import { useProducts } from 'entities/product';
 import { WithProtection } from 'features/auth/guard';
 import { LoadMore } from 'features/product/load-more';
 

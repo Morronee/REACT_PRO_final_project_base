@@ -7,7 +7,7 @@ import { Rating } from 'shared/ui/Rating';
 import { ButtonBack } from 'shared/ui/ButtonBack';
 import { ReviewList } from 'widgets/ReviewList/ui/ReviewList.tsx';
 import { useGetProductQuery } from 'entities/product/api';
-import { useAppSelector } from 'shared/store/utils.ts';
+import { useAppSelector } from 'app/providers/store/lib/utils.ts';
 import { CartCounter, cartSelectors } from 'entities/cart';
 import { AddToCartWithCounterButton } from 'features/cart/add-to-cart';
 import { WithProtection } from 'features/auth/guard';
