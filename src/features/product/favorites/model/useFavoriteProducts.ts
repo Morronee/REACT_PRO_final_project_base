@@ -24,7 +24,7 @@ export const useFavoriteProducts = () => {
 			return [];
 		}
 
-		return products.filter((product) => isLiked(product.likes, user?.id));
+		return data.products.filter((product) => isLiked(product.likes, user?.id));
 	}, [data?.products, user?.id]);
 
 	const productsCount = data?.length || 0;
