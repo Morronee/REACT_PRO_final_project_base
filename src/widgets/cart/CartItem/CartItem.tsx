@@ -4,11 +4,12 @@ import classNames from 'classnames';
 import type { CartProduct } from 'entities/product';
 import { CartCounter } from 'entities/cart';
 import { DeleteCartProductButton } from 'features/cart/delete-cart-product';
+import { memo } from 'react';
 
 type CartItemProps = {
 	product: CartProduct;
 };
-export const CartItem = ({ product }: CartItemProps) => {
+export const CartItem = memo(({ product }: CartItemProps) => {
 	const { id, name, images, price, discount } = product;
 
 	return (
@@ -52,4 +53,6 @@ export const CartItem = ({ product }: CartItemProps) => {
 			</div>
 		</div>
 	);
-};
+});
+
+CartItem.displayName = 'CartItem';

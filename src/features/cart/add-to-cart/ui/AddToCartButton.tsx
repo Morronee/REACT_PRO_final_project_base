@@ -1,5 +1,6 @@
 import { useAddToCart } from 'features/cart/add-to-cart';
 import type { Product } from 'entities/product';
+import { useCallback } from 'react';
 
 interface IProps {
 	product: Product;
@@ -16,9 +17,13 @@ export const AddToCartButton = ({
 }: IProps) => {
 	const { addProductToCart } = useAddToCart();
 
+	const handleAddProductToCart = useCallback(() => {
+		addProductToCart({ ...product, count });
+	}, [addProductToCart, count, product]);
+
 	return (
 		<button
-			onClick={() => addProductToCart({ ...product, count })}
+			onClick={handleAddProductToCart}
 			disabled={isProductInCart}
 			className={classNames}>
 			В корзину

@@ -9,11 +9,12 @@ import { toast } from 'react-toastify';
 import type { IErrorResponse, Product } from 'entities/product';
 import { userSelectors } from 'entities/user';
 import { useAppSelector } from 'shared/hooks';
+import { memo } from 'react';
 
 type TLikeButtonProps = {
 	product: Product;
 };
-export const ToggleLikeButton = ({ product }: TLikeButtonProps) => {
+export const ToggleLikeButton = memo(({ product }: TLikeButtonProps) => {
 	const accessToken = useAppSelector(userSelectors.getAccessToken);
 	const user = useAppSelector(userSelectors.getUser);
 
@@ -49,4 +50,6 @@ export const ToggleLikeButton = ({ product }: TLikeButtonProps) => {
 			<LikeSvg />
 		</button>
 	);
-};
+});
+
+ToggleLikeButton.displayName = 'ToggleLikeButton';

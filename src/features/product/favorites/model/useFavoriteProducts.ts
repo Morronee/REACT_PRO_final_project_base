@@ -1,8 +1,9 @@
 import { useGetProductsQuery } from 'entities/product/api';
-import { productsSelectors } from 'entities/product';
+import { type Product, productsSelectors } from 'entities/product';
 import { userSelectors } from 'entities/user';
 import { useAppSelector } from 'shared/hooks';
 import { isLiked } from 'entities/product/lib/isLiked.ts';
+import { useMemo } from 'react';
 
 export const useFavoriteProducts = () => {
 	const { searchText, page, sort } = useAppSelector(
@@ -16,11 +17,15 @@ export const useFavoriteProducts = () => {
 		perPage: undefined,
 	});
 
-	let products = data?.products || [];
-
 	const user = useAppSelector(userSelectors.getUser);
 
-	products = products.filter((product) => isLiked(product.likes, user?.id));
+	const products: Product[] = useMemo(() => {
+		if (!data?.products) {
+			return [];
+		}
+
+		return products.filter((product) => isLiked(product.likes, user?.id));
+	}, [data?.products, user?.id]);
 
 	const productsCount = data?.length || 0;
 

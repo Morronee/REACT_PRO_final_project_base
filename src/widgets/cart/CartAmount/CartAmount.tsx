@@ -1,16 +1,19 @@
 import s from './CartAmount.module.css';
 import classNames from 'classnames';
 import type { CartProduct } from 'entities/product';
+import { memo, useMemo } from 'react';
 
 type CartAmountProps = {
 	products: CartProduct[];
 };
-export const CartAmount = ({ products }: CartAmountProps) => {
-	const allPrice = products.reduce((acc, p) => p.price * p.count + acc, 0);
-	const allDiscount = products.reduce(
-		(acc, p) => p.discount * p.count + acc,
-		0
-	);
+export const CartAmount = memo(({ products }: CartAmountProps) => {
+	const allPrice = useMemo(() => {
+		return products.reduce((acc, p) => p.price * p.count + acc, 0);
+	}, [products]);
+
+	const allDiscount = useMemo(() => {
+		return products.reduce((acc, p) => p.discount * p.count + acc, 0);
+	}, [products]);
 
 	const handleSubmitCart = () => {
 		const order = products.map((p) => ({ id: p.id, count: p.count }));
@@ -61,4 +64,6 @@ export const CartAmount = ({ products }: CartAmountProps) => {
 			</button>
 		</div>
 	);
-};
+});
+
+CartAmount.displayName = 'CartAmount';
