@@ -6,10 +6,38 @@ interface UserState {
 	accessToken: string;
 }
 
-const createInitState = (): UserState => ({
-	user: null,
-	accessToken: '',
-});
+type PersistedUserState = Pick<UserState, 'user' | 'accessToken'>;
+
+const USER_STORAGE_KEY = 'user_state';
+
+const getPersistedUserState = (): PersistedUserState | null => {
+	if (typeof window === 'undefined') {
+		return null;
+	}
+
+	try {
+		const rawValue = window.localStorage.getItem(USER_STORAGE_KEY);
+		if (!rawValue) {
+			return null;
+		}
+
+		const parsedValue = JSON.parse(rawValue) as Partial<PersistedUserState>;
+		return {
+			user: parsedValue.user ?? null,
+			accessToken: parsedValue.accessToken ?? '',
+		};
+	} catch {
+		return null;
+	}
+};
+
+const createInitState = (): UserState => {
+	const persistedState = getPersistedUserState();
+	return {
+		user: persistedState?.user ?? null,
+		accessToken: persistedState?.accessToken ?? '',
+	};
+};
 
 export const userSlice = createSlice({
 	name: 'user',
@@ -33,3 +61,4 @@ export const userSlice = createSlice({
 
 export const userActions = { ...userSlice.actions };
 export const userSelectors = userSlice.selectors;
+export { USER_STORAGE_KEY };
