@@ -1,6 +1,7 @@
-import { Alert, CircularProgress, Stack } from '@mui/material';
+import { Alert, Stack } from '@mui/material';
 import { useRef } from 'react';
 import { useLoadMore } from 'features/product/load-more';
+import { Loader } from 'shared/ui/Loader/ui/Loader.tsx';
 
 export const LoadMore = () => {
 	const ref = useRef<HTMLDivElement>(null);
@@ -13,7 +14,7 @@ export const LoadMore = () => {
 			justifyContent='center'
 			alignItems='center'
 			sx={{ my: 5 }}>
-			{isFetching && <CircularProgress />}
+			{isFetching && <Loader />}
 			{isEndOfList && <Alert severity='success'>End of list!</Alert>}
 		</Stack>
 	);

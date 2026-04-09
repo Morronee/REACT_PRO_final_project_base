@@ -3,13 +3,13 @@ import {
 	AlertTitle,
 	Box,
 	Button,
-	CircularProgress,
 	Container,
 } from '@mui/material';
 import type { FC, ComponentType } from 'react';
 import { getMessageFromError } from 'shared/utils';
 import type { SerializedError } from '@reduxjs/toolkit';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { Loader } from 'shared/ui/Loader/ui/Loader.tsx';
 
 interface WithQueryProps {
 	isLoading: boolean;
@@ -45,7 +45,7 @@ export const WithQuery = <T extends object>(
 		if (isLoading) {
 			return (
 				<Box sx={{ display: 'flex', justifyContent: 'center' }}>
-					<CircularProgress />
+					<Loader />
 				</Box>
 			);
 		}
