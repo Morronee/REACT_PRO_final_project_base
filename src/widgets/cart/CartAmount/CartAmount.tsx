@@ -1,4 +1,4 @@
-import s from 'pages/CartPage/ui/CartPage.module.css';
+import s from './CartAmount.module.css';
 import classNames from 'classnames';
 import type { CartProduct } from 'entities/product';
 
