@@ -2,6 +2,7 @@ import s from './AddToCartWithCounterButton.module.css';
 import classNames from 'classnames';
 import { type Product, useProductCount } from 'entities/product';
 import { AddToCartButton } from 'features/cart/add-to-cart';
+import { CounterInput } from 'shared/ui/CounterInput';
 
 interface IProps {
 	product: Product;
@@ -12,20 +13,12 @@ export const AddToCartWithCounterButton = ({ product }: IProps) => {
 
 	return (
 		<div className={classNames('product__btn-wrap')}>
-			<div className={s['button-count']}>
-				<button className={s['button-count__minus']} onClick={handleCountMinus}>
-					-
-				</button>
-				<input
-					type='number'
-					className={s['button-count__num']}
-					value={count}
-					onChange={handleCount}
-				/>
-				<button className={s['button-count__plus']} onClick={handleCountPlus}>
-					+
-				</button>
-			</div>
+			<CounterInput
+				count={count}
+				handleDecrement={handleCountMinus}
+				handleSetCount={handleCount}
+				handleIncrement={handleCountPlus}
+			/>
 			<AddToCartButton
 				product={product}
 				count={count}

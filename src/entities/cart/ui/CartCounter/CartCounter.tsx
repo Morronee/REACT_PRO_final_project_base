@@ -1,6 +1,5 @@
-import s from './CartCounter.module.css';
-import classNames from 'classnames';
 import { useCartCount } from 'entities/cart/lib/useCartCount.ts';
+import { CounterInput } from 'shared/ui/CounterInput';
 
 type TCartCounter = {
 	productId: string;
@@ -10,26 +9,12 @@ export const CartCounter = ({ productId }: TCartCounter) => {
 		useCartCount(productId);
 
 	return (
-		<>
-			<div className={classNames(s['button-count'])}>
-				<button
-					onClick={handleDecrement}
-					className={classNames(s['button-count__minus'])}>
-					-
-				</button>
-				<input
-					onChange={handleSetCount}
-					type='number'
-					className={classNames(s['button-count__num'])}
-					value={count}
-				/>
-				<button
-					onClick={handleIncrement}
-					className={classNames(s['button-count__plus'])}
-					disabled={count >= stock}>
-					+
-				</button>
-			</div>
-		</>
+		<CounterInput
+			count={count}
+			handleDecrement={handleDecrement}
+			handleSetCount={handleSetCount}
+			handleIncrement={handleIncrement}
+			disabled={count >= stock}
+		/>
 	);
 };
