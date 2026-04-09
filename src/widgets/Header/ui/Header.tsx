@@ -18,6 +18,7 @@ export const Header = () => {
 		isLiked(product.likes, user?.id)
 	).length;
 
+
 	const accessToken = useAppSelector(userSelectors.getAccessToken);
 
 	return (
