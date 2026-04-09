@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import s from './Header.module.css';
 import { Logo } from 'shared/ui/Logo';
 import { Link } from 'react-router-dom';
-import { isLiked } from 'shared/utils';
 import { useProducts } from 'entities/product/model/useProducts.ts';
 import { cartSelectors } from 'entities/cart';
 import { userSelectors } from 'entities/user';
 import { Search } from 'features/product/search';
 import { useAppSelector } from 'shared/hooks';
+import { isLiked } from 'entities/product/lib/isLiked.ts';
 
 export const Header = () => {
 	const { products } = useProducts();

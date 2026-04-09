@@ -1,8 +1,8 @@
-import { isLiked } from 'shared/utils';
 import { useGetProductsQuery } from 'entities/product/api';
 import { productsSelectors } from 'entities/product';
 import { userSelectors } from 'entities/user';
 import { useAppSelector } from 'shared/hooks';
+import { isLiked } from 'entities/product/lib/isLiked.ts';
 
 export const useFavoriteProducts = () => {
 	const { searchText, page, sort } = useAppSelector(
