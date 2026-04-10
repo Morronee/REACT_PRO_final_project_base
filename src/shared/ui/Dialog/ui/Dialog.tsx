@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { Modal } from 'shared/ui/Modal';
 import s from './Dialog.module.css';
@@ -33,15 +33,21 @@ export const Dialog = ({
 	const surfaceRef = useRef<HTMLDivElement>(null);
 	const previousActiveElementRef = useRef<HTMLElement | null>(null);
 
+	const cancelButtonRef = useRef<HTMLButtonElement | null>(null);
+
+	const setCancelButtonRef = useCallback((node: HTMLButtonElement | null) => {
+		cancelButtonRef.current = node;
+		if (node) {
+			node.focus();
+		}
+	}, []);
+
 	useEffect(() => {
 		if (!isOpen) {
 			return;
 		}
 
 		previousActiveElementRef.current = document.activeElement as HTMLElement;
-		requestAnimationFrame(() => {
-			surfaceRef.current?.focus();
-		});
 
 		return () => {
 			previousActiveElementRef.current?.focus();
@@ -57,7 +63,6 @@ export const Dialog = ({
 		onConfirm?.();
 		onClose();
 	};
-
 
 	const handleOnClickBlur = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (e.target !== e.currentTarget) return;
@@ -78,6 +83,7 @@ export const Dialog = ({
 					{!hideActions && (
 						<div className={s['dialog__actions']}>
 							<button
+								ref={setCancelButtonRef}
 								className={classNames(
 									s['dialog__button'],
 									s['dialog__button_type_secondary']
@@ -102,4 +108,3 @@ export const Dialog = ({
 		</Modal>
 	);
 };
-
