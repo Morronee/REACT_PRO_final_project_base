@@ -5,6 +5,7 @@ import type { CartProduct } from 'entities/product';
 import { CartCounter } from 'entities/cart';
 import { DeleteCartProductButton } from 'features/cart/delete-cart-product';
 import { memo } from 'react';
+import { Delete } from '@mui/icons-material';
 
 type CartItemProps = {
 	product: CartProduct;
@@ -47,7 +48,9 @@ export const CartItem = memo(({ product }: CartItemProps) => {
 						<DeleteCartProductButton
 							productid={id}
 							className={classNames(s['cart-item__bnt-trash'])}
-						/>
+						>
+							<Delete />
+						</DeleteCartProductButton>
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@ import Viber from '../../../shared/assets/images/viber.svg';
 import Vk from '../../../shared/assets/images/vk.svg';
 import Whatsapp from '../../../shared/assets/images/whatsapp.svg';
 import s from './Footer.module.css';
-import { Logo } from '../../../shared/ui/Logo';
+import { Logo } from 'shared/ui/Logo';
 
 export const Footer = () => {
 	return (
