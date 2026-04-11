@@ -150,3 +150,27 @@ src
 ├── Modal
 └── Dialog
 ```
+
+## Сравнение сборок
+
+| Сборщик | Версия | Время сборки |
+|---------|---|---:|
+| Webpack | `5.93.0` | `~9.15s` | 
+| Vite    | `8.0.3` | `~1.35s` | 
+
+### Логи
+
+```text
+Webpack:
+webpack 5.93.0 compiled with 3 warnings in 9154 ms
+```
+
+```text
+Vite:
+vite v8.0.3 building client environment for production...
+✓ built in 1.35s
+```
+
+### Вывод
+Сборка через **Vite** в текущем проекте выполняется существенно быстрее.
+
