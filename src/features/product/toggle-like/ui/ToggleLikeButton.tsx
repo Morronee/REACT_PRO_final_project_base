@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import type { IErrorResponse, Product } from 'entities/product';
 import { userSelectors } from 'entities/user';
 import { useAppSelector } from 'shared/hooks';
-import { memo } from 'react';
+import { memo, useEffect, useOptimistic, useState, useTransition } from 'react';
 
 type TLikeButtonProps = {
 	product: Product;
@@ -20,31 +20,57 @@ export const ToggleLikeButton = memo(({ product }: TLikeButtonProps) => {
 
 	const [setLike] = useSetLikeProductMutation();
 	const [deleteLike] = useDeleteLikeProductMutation();
+	const [isPending, startTransition] = useTransition();
 
-	const isLike = product?.likes.some((l) => l.userId === user?.id);
+	const likedFromServer = product.likes.some((l) => l.userId === user?.id);
+	const [stickyLiked, setStickyLiked] = useState<boolean | null>(null);
 
-	const toggleLike = async () => {
+	useEffect(() => {
+		setStickyLiked(null);
+	}, [product.id]);
+
+	useEffect(() => {
+		if (stickyLiked !== null && stickyLiked === likedFromServer) {
+			setStickyLiked(null);
+		}
+	}, [likedFromServer, stickyLiked]);
+
+	const committedLiked = stickyLiked !== null ? stickyLiked : likedFromServer;
+
+	const [isLiked, setOptimisticLiked] = useOptimistic(
+		committedLiked,
+		(_committed, next: boolean) => next
+	);
+
+	const toggleLike = () => {
 		if (!accessToken) {
 			toast.warning('Вы не авторизованы');
 			return;
 		}
-		let response;
-		if (isLike) {
-			response = await deleteLike({ id: `${product.id}` });
-		} else {
-			response = await setLike({ id: `${product.id}` });
-		}
+		const displayed = stickyLiked !== null ? stickyLiked : likedFromServer;
+		const nextLiked = !displayed;
+		startTransition(async () => {
+			setOptimisticLiked(nextLiked);
+			const response = nextLiked
+				? await setLike({ id: `${product.id}` })
+				: await deleteLike({ id: `${product.id}` });
 
-		if (response.error) {
-			const error = response.error as IErrorResponse;
-			toast.error(error.data.message);
-		}
+			if (response.error) {
+				const error = response.error as IErrorResponse;
+				toast.error(error.data.message);
+				setStickyLiked(null);
+				return;
+			}
+			setStickyLiked(nextLiked);
+		});
 	};
 
 	return (
 		<button
+			type='button'
+			disabled={isPending}
 			className={classNames(s['card__favorite'], {
-				[s['card__favorite_is-active']]: isLike,
+				[s['card__favorite_is-active']]: isLiked,
 			})}
 			onClick={toggleLike}>
 			<LikeSvg />
